@@ -44,14 +44,6 @@ class PagingLocalActivity : BaseActivity() {
     override fun initData() {
         viewModel.getData(this)
         viewModel.mOrderList.observe(this, Observer(adapter::submitList))
-
-        lifecycleScope.launch {
-            viewModel.cheekAll().collect {
-                showMsg(it.toGsonString())
-//                adapter.submitList(it)
-            }
-        }
-
     }
 
     override fun initViewEvent() {

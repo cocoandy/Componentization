@@ -21,8 +21,8 @@ interface OrderDAO {
     @Query("SELECT * FROM OrderEntity ORDER BY date DESC")
     fun getOrders(): DataSource.Factory<Int, OrderEntity>
 
-    @Query("SELECT * FROM OrderEntity ORDER BY date DESC")
-    fun getOrderFlows(): Flow<PagedList<OrderEntity>>
+//    @Query("SELECT * FROM OrderEntity ORDER BY date DESC")
+//    fun getOrderFlows(): Flow<PagedList<OrderEntity>>
 
 
     @Insert

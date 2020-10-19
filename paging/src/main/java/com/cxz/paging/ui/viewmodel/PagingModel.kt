@@ -21,8 +21,6 @@ class PagingModel : BaseViewModel() {
     private val config = Config(pageSize = 15, enablePlaceholders = false, maxSize = 45)
     val mOrderList: LiveData<PagedList<OrderEntity>> = db.getOrders().toLiveData(config)
 
-    val mOrderFlow: Flow<PagedList<OrderEntity>> = db.getOrderFlows()
-
     fun getData(lifecycle: LifecycleOwner) {
         val mOrderList: LiveData<PagedList<OrderEntity>> = db.getOrders().toLiveData(config)
         mOrderList.observe(lifecycle, Observer {
