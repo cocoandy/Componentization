@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.OrderCoordinatorActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+<!--        app:layout_scrollFlags=”scroll” 和介绍 AppBarLayout 时，给Toolbar 设置和配置一样。其效果上图已做展示。-->
+<!--        app:expandedTitleGravity=”center_horizontal” 从单词意思可以看出，这是展示后，title的位置。-->
+<!--        app:expandedTitleMarginStart=”50dp” 从单词意思可以看出，这是展示后，title 距离开始位置的边距。-->
+<!--        app:collapsedTitleGravity=”center” 从单词意思可以看出，这是收缩后，title 位置（测试发现，不好用）。-->
+<!--        app:expandedTitleTextAppearance=”@style/transparentText” 展开后标题文字的样式-->
+<!--        app:collapsedTitleTextAppearance=”@style/ToolbarTitle” 折叠后标题文字的样式-->
+<!--        给 ImageView 控件 设置的 app:layout_collapseMode=”parallax” 属性说明：-->
+<!--        app:layout_collapseMode有两个参数：-->
+
+<!--        parallax 子View可以选择在当前的布局当时是否以“视差”的方式来跟随滚动。（PS:其实就是让这个View的滚动的速度比其他正常滚动的View速度稍微慢一点）。-->
+<!--        pin 测试发现，按照以上的布局，如果你使用pin参数，看效果，和使用parallax 参数，好像没有什么区别。目前个人认为的区别后面在做介绍。-->
+<!--        -->
+        <include layout="@layout/base_toolbar" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_context"/>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,40 @@
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <style name="transparentText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">#00000000</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">#f0f0</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="AppTheme" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark"></style>
+
+    <style name="expandedTitleTextAppearance">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MianItemText">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+    </style>
+
+
+</resources>

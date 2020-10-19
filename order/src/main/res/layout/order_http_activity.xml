@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.OrderHttpActivity">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.cxz.order.ui.viewmodel.OrderViewModel" />
+
+        <variable
+            name="gson"
+            type="com.google.gson.Gson" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/base_toolbar" />
+
+        <TextView
+            android:id="@+id/mTvHttp1"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:onClick="@{() -> viewmodel.modelOrder()}"
+            android:text="viewmodelscrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mToolBar" />
+
+
+        <TextView
+            android:id="@+id/mTvHttp2"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:onClick="@{() -> viewmodel.asyncOrder()}"
+            android:text="scyn整合查询"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mTvHttp1" />
+
+
+        <TextView
+            android:id="@+id/mTvHttp3"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:onClick="@{() -> viewmodel.liveOrder()}"
+            android:text="livedata{}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mTvHttp2" />
+
+        <TextView
+            android:id="@+id/mTvHttp4"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="。。。。。"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mTvHttp3" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mTvHttp4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F8F4E8"
+                    android:padding="5dp"
+                    android:text="@{gson.toJson(viewmodel.modelOrder)}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:background="#F8F4E8"
+                    android:padding="5dp"
+                    android:text="@{gson.toJson(viewmodel.asyncOrder)}" />
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

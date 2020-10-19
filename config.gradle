@@ -1,0 +1,80 @@
+ext {
+
+
+    //是否是正式化境
+    // true 是正式环境，集成化开发，打包整个项目  false 组件化开发 可以单个运行
+    isRelease = false
+
+
+    //版本控制
+    version = [
+            kt_version           : '1.3.71',
+            kt_coroutines_version: '1.1.1',
+            retrofit_version     : '2.9.0',
+            gson_version         : '2.9.0',
+            lifecycle_version    : '2.2.0',
+            paging_version       : '2.1.2',
+            recycle_version      : '1.0.0',
+            cardview_version     : '1.0.0',
+            material_version     : '1.0.0',
+            room_version         : '2.2.5'
+    ]
+
+    //基本配置
+    androidConfig = [
+            minSdkVersion    : 16,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : '1.0',
+            compileSdkVersion: 29,
+            buildToolsVersion: '29.0.3'
+    ]
+
+    //各个项目的AppID
+    applicationID = [
+            appID    : 'com.cxz.mianapp',
+            contactID: 'com.cxz.contact',
+            orderID  : 'com.cxz.order'
+    ]
+
+    //每个项目都要依赖的直接each遍历加载
+    supports = [
+            appcompat       : 'androidx.appcompat:appcompat:1.1.0',
+            jetbrains       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            corektx         : 'androidx.core:core-ktx:1.3.0',
+            constraintlayout: 'androidx.constraintlayout:constraintlayout:1.1.3',
+            //协程
+            corcore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version.kt_coroutines_version",
+            corandroid      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version.kt_coroutines_version"
+    ]
+
+    projects = [
+            order  : project(':order'),
+            contact: project(':contact')
+    ]
+
+    publiclibs = [
+            common : project(':common'),
+            httplib: project(':httplib'),
+            dblib: project(':dblib')
+    ]
+
+    otherlibs = [
+            retrofitlib: "com.squareup.retrofit2:retrofit:$version.retrofit_version",//Retrofit依赖
+            gsonlib    : "com.squareup.retrofit2:converter-gson:$version.gson_version"//可选依赖，解析json字符所用
+    ]
+
+    androidlib = [
+            paging      : "androidx.paging:paging-runtime-ktx:$version.paging_version",
+            viewmodel   : "androidx.lifecycle:lifecycle-viewmodel-ktx:$version.lifecycle_version",
+            livedata    : "androidx.lifecycle:lifecycle-livedata-ktx:$version.lifecycle_version",
+            lifecycle   : "androidx.lifecycle:lifecycle-runtime-ktx:$version.lifecycle_version",
+            room        : "androidx.room:room-ktx:$version.room_version",
+            roomcompiler: "android.arch.persistence.room:compiler:$version.room_version",
+            recyclerview: "androidx.recyclerview:recyclerview:$version.recycle_version",
+            cardview    : "androidx.cardview:cardview:$version.cardview_version",
+            material    : "com.google.android.material:material:$version.material_version"
+    ]
+
+
+}

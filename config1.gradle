@@ -1,0 +1,179 @@
+ext.deps = [:]
+
+//是否是正式化境
+// true 是正式环境，集成化开发，打包整个项目  false 组件化开发 可以单个运行
+ext.isRelease = false
+//版本控制
+def versions = [
+        activity                  : "1.1.0",
+        android_gradle_plugin     : '4.0.1',
+        annotations               : "1.0.0",
+        apache_commons            : "2.5",
+        appcompat                 : "1.2.0",
+        arch_core                 : "2.1.0",
+        atsl_core                 : "1.2.0",
+        atsl_junit                : "1.1.1",
+        atsl_rules                : "1.2.0",
+        atsl_runner               : "1.2.0",
+        benchmark                 : "1.0.0",
+        cardview                  : "1.0.0",
+        constraint_layout         : "2.0.1",
+        core_ktx                  : "1.3.0",
+        coroutines                : "1.3.3",
+        dagger                    : "2.16",
+        dexmaker                  : "2.2.0",
+        espresso                  : "3.2.0",
+        fragment                  : "1.2.1",
+        glide                     : "4.8.0",
+        hamcrest                  : "1.3",
+        junit                     : "4.12",
+        kotlin                    : "1.3.71",
+        lifecycle                 : "2.2.0",
+        material                  : "1.0.0",
+        mockito                   : "2.25.0",
+        mockito_all               : "1.10.19",
+        mockito_android           : "2.25.0",
+        mockwebserver             : "3.8.1",
+        navigation                : "2.3.0-alpha01",
+        okhttp_logging_interceptor: "3.9.0",
+        paging                    : "2.1.2",
+        recyclerview              : "1.0.0",
+        retrofit                  : "2.9.0",
+        robolectric               : "4.2",
+        room                      : "2.2.5",
+        rx_android                : "2.0.1",
+        rxjava2                   : "2.1.3",
+        timber                    : "4.7.1",
+        transition                : "1.3.0",
+        truth                     : "1.0.1",
+        work                      : "2.2.0",
+        arouter_api               : "1.5.0",
+        arouter_compiler          : "1.2.2"
+]
+ext.versions = versions
+
+
+//基本配置
+def buildConfig = [
+        minSdkVersion    : 16,
+        targetSdkVersion : 29,
+        versionCode      : 1,
+        versionName      : '1.0',
+        compileSdkVersion: 29,
+        buildToolsVersion: '29.0.3'
+]
+ext.buildConfig = buildConfig
+
+//各个项目的AppID
+def appIds = [
+        appID    : 'com.cxz.mianapp',
+        contactID: 'com.cxz.contact',
+        pagingID : 'com.cxz.paging',
+        orderID  : 'com.cxz.order'
+]
+ext.appIds = appIds
+
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
+
+def projects = [
+        order  : project(':order'),
+        contact: project(':contact')
+]
+deps.projects = projects
+
+def publics = [
+        common   : project(':common'),
+        httplib  : project(':httplib'),
+        layoutlib: project(':layoutlib'),
+        dblib    : project(':dblib')
+]
+deps.publics = publics
+
+
+//每个项目都要依赖的直接each遍历加载
+def supports = [
+        activity_ktx      : "androidx.activity:activity-ktx:$versions.activity",
+        app_compat        : "androidx.appcompat:appcompat:$versions.appcompat",
+        stdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+        core_ktx          : "androidx.core:core-ktx:$versions.core_ktx",
+        constraint_layout : "androidx.constraintlayout:constraintlayout:$versions.constraint_layout",
+        //协程
+        coroutines_code   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+        coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+]
+deps.supports = supports
+
+def kotlin = [
+        stdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+        test   : "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin",
+        plugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        allopen: "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+]
+deps.kotlin = kotlin
+
+//网络请求
+def retrofit = [
+        runtime: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        gson   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        mock   : "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+]
+deps.retrofit = retrofit
+
+//navigation
+def navigation = [
+        runtime         : "androidx.navigation:navigation-runtime:$versions.navigation",
+        runtime_ktx     : "androidx.navigation:navigation-runtime-ktx:$versions.navigation",
+        fragment        : "androidx.navigation:navigation-fragment:$versions.navigation",
+        fragment_ktx    : "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        testing         : "androidx.navigation:navigation-testing:$versions.navigation",
+        ui              : "androidx.navigation:navigation-ui:$versions.navigation",
+        ui_ktx          : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+        safe_args_plugin: "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+]
+deps.navigation = navigation
+
+//本地数据库
+def room = [
+        runtime      : "androidx.room:room-runtime:$versions.room",
+        compiler     : "androidx.room:room-compiler:$versions.room",
+        rxjava2      : "androidx.room:room-rxjava2:$versions.room",
+        testing      : "androidx.room:room-testing:$versions.room",
+        room_ktx     : "androidx.room:room-ktx:$versions.room",
+        kapt_compiler: "android.arch.persistence.room:compiler:$versions.room",
+]
+deps.room = room
+
+def lifecycle = [
+        lifecycle_ktx: "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+        runtime      : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
+        java8        : "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle",
+        compiler     : "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle",
+        viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+        livedata_ktx : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+]
+deps.lifecycle = lifecycle
+
+def materials = [
+        recyclerview: "androidx.recyclerview:recyclerview:$versions.recyclerview",
+        cardview    : "androidx.cardview:cardview:$versions.cardview",
+        material    : "com.google.android.material:material:$versions.material"
+]
+deps.materials = materials
+
+
+// 替换成最新版本, 需要注意的是api
+// 要与compiler匹配使用，均使用最新版可以保证兼容
+def arouter = [
+        api     : "com.alibaba:arouter-api:$versions.arouter_api",
+        compiler: "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+]
+deps.arouter = arouter
+
+
+
+
+
+

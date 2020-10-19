@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@mipmap/ic_qr"
+        android:title="Search"
+        android:iconTint="@color/colorAccent"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@mipmap/ic_setting"
+        android:title="notifications"
+        android:iconTint="@color/colorAccent"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@mipmap/icon_seach"
+        android:iconTint="@color/colorAccent"
+        android:orderInCategory="50"
+        android:title="分享1"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_settings1"
+        android:icon="@mipmap/icon_seach"
+        android:iconTint="@color/colorAccent"
+        android:orderInCategory="50"
+        android:title="分享2"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_settings2"
+        android:icon="@mipmap/icon_seach"
+        android:iconTint="@color/colorAccent"
+        android:orderInCategory="50"
+        android:title="分享3"
+        app:showAsAction="collapseActionView" />
+</menu>
